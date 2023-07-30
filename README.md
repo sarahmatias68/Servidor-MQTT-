@@ -1,7 +1,7 @@
 ### Descrição do Código - MQTT Broker e Servidor Web
 
 
-Este repositório contém um código para um ESP32 que atua como um MQTT Broker e também hospeda um servidor web para exibir os tópicos e cargas publicados pelos clientes MQTT.
+Este repositório contém um código para um ESP32 que atua como um MQTT Broker e também hospeda um servidor web para exibir os tópicos e pacotes publicados pelos clientes MQTT.
 
 
 ### Funcionalidades Principais
@@ -9,9 +9,9 @@ Este repositório contém um código para um ESP32 que atua como um MQTT Broker 
 
 **MQTT Broker:** O ESP32 atua como um Broker MQTT, permitindo que dispositivos clientes publiquem mensagens em tópicos e se inscrevam para receber essas mensagens.
 
-**Armazenamento de Tópicos e Cargas:** O código mantém uma lista dos tópicos e pacotes recebidos dos clientes MQTT, armazenando-os em memória até a reinicialização do ESP32.
+**Armazenamento de Tópicos e Pacotes:** O código mantém uma lista dos tópicos e pacotes recebidos dos clientes MQTT, armazenando-os em memória até a reinicialização do ESP32.
 
-**Servidor Web:** Além de funcionar como Broker MQTT, o ESP32 também hospeda um servidor web que exibe os tópicos e cargas armazenados em uma página HTML.
+**Servidor Web:** Além de funcionar como Broker MQTT, o ESP32 também hospeda um servidor web que exibe os tópicos e pacotes armazenados em uma página HTML.
 
 
 ### Como Utilizar
