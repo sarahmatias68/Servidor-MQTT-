@@ -7,10 +7,10 @@ class MeuBroker : public sMQTTBroker {
 public:
     void RemoverCliente(sMQTTClient*) {
     };
-    void Publicar(sMQTTClient *cliente, const std::string &topico, const std::string &carga) {
-        // Armazena o tópico e a carga nas listas
+    void Publicar(sMQTTClient *cliente, const std::string &topico, const std::string &pacote) {
+        // Armazena o tópico e a pacote nas listas
         topicos.push_back(topico);
-        cargas.push_back(carga);
+        pacotes.push_back(pacote);
     }
     bool OcorrerEvento(sMQTTEvent *evento) {
         switch (evento->Type()) {
@@ -22,7 +22,7 @@ public:
     }
 
     std::vector<std::string> topicos;
-    std::vector<std::string> cargas;
+    std::vector<std::string> pacotes;
 };
 
 MeuBroker meuBroker;
@@ -30,9 +30,9 @@ MeuBroker meuBroker;
 void PaginaPrincipal(AsyncWebServerRequest *requisicao) {
     String html = "<html><body><h1>Dados dos Topicos</h1><ul>";
 
-    // Itera sobre os tópicos e cargas armazenados e os adiciona ao HTML
+    // Itera sobre os tópicos e pacotes armazenados e os adiciona ao HTML
     for (size_t i = 0; i < meuBroker.topicos.size(); i++) {
-        html += "<li>Tópico: " + String(meuBroker.topicos[i].c_str()) + ", &#013 Carga: " + String(meuBroker.cargas[i].c_str()) + "</li>";
+        html += "<li>Tópico: " + String(meuBroker.topicos[i].c_str()) + ", &#013 Pacote: " + String(meuBroker.pacotes[i].c_str()) + "</li>";
     }
 
     html += "</ul></body></html>";
