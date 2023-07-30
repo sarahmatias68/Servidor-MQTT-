@@ -32,4 +32,4 @@ Este repositório contém um código para um ESP32 que atua como um MQTT Broker 
 Este código não inclui recursos avançados de segurança ou autenticação para o servidor web ou o MQTT Broker. Se a segurança for uma preocupação, considere adicionar autenticação e criptografia para proteger o acesso e as comunicações. Caso queira estender a funcionalidade deste código, você pode adicionar recursos como limpeza das listas de tópicos e pacotes após um certo período ou permitir que os usuários publiquem mensagens para os tópicos diretamente através da página web.
 
 *Lembre-se de revisar a documentação das bibliotecas utilizadas para entender melhor suas funcionalidades e opções de configuração.*
-*Os dados publicados serão perdidos assim que o ESP32 for reinicializado, como os dados serão usados em ambiente academico não houve necessidade de hospeda-los*
+*Os dados publicados serão perdidos assim que o ESP32 for reinicializado, como os dados serão usados em ambiente academico somente para efeito de aprendizado não houve necessidade de hospeda-los*
