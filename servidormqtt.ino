@@ -1,29 +1,19 @@
 #include <sMQTTBroker.h>
 #include <ESPAsyncWebServer.h>
 
-AsyncWebServer server(80);
+AsyncWebServer servidorWeb(80);
 
-class MyBroker : public sMQTTBroker {
+class MeuBroker : public sMQTTBroker {
 public:
-    bool onConnect(sMQTTClient *client, const std::string &username, const std::string &password) {
-        // check username and password, if ok return true
-        return true;
+    void RemoverCliente(sMQTTClient*) {
     };
-    void onRemove(sMQTTClient*) {
-    };
-    void onPublish(sMQTTClient *client, const std::string &topic, const std::string &payload) {
-        // Store the topic and payload in the lists
-        topics.push_back(topic);
-        payloads.push_back(payload);
+    void Publicar(sMQTTClient *cliente, const std::string &topico, const std::string &carga) {
+        // Armazena o tópico e a carga nas listas
+        topicos.push_back(topico);
+        cargas.push_back(carga);
     }
-    bool onEvent(sMQTTEvent *event) {
-        switch (event->Type()) {
-        case NewClient_sMQTTEventType: {
-            sMQTTNewClientEvent *e = (sMQTTNewClientEvent*)event;
-            e->Login();
-            e->Password();
-        }
-        break;
+    bool OcorrerEvento(sMQTTEvent *evento) {
+        switch (evento->Type()) {
         case LostConnect_sMQTTEventType:
             WiFi.reconnect();
             break;
@@ -31,44 +21,44 @@ public:
         return true;
     }
 
-    std::vector<std::string> topics;
-    std::vector<std::string> payloads;
+    std::vector<std::string> topicos;
+    std::vector<std::string> cargas;
 };
 
-MyBroker broker;
+MeuBroker meuBroker;
 
-void handleRoot(AsyncWebServerRequest *request) {
+void PaginaPrincipal(AsyncWebServerRequest *requisicao) {
     String html = "<html><body><h1>Dados dos Topicos</h1><ul>";
 
-    // Iterate through the stored topics and payloads and add them to the HTML
-    for (size_t i = 0; i < broker.topics.size(); i++) {
-        html += "<li>Topic: " + String(broker.topics[i].c_str()) + ", &#013 Payload: " + String(broker.payloads[i].c_str()) + "</li>";
+    // Itera sobre os tópicos e cargas armazenados e os adiciona ao HTML
+    for (size_t i = 0; i < meuBroker.topicos.size(); i++) {
+        html += "<li>Tópico: " + String(meuBroker.topicos[i].c_str()) + ", &#013 Carga: " + String(meuBroker.cargas[i].c_str()) + "</li>";
     }
 
     html += "</ul></body></html>";
-    request->send(200, "text/html", html);
+    requisicao->send(200, "text/html", html);
 }
 
 void setup() {
     Serial.begin(115200);
-    const char* ssid = "Real Fibra MLDS";         // The SSID (name) of the Wi-Fi network you want to connect to
-    const char* password = "86315415";     // The password of the Wi-Fi network
-    WiFi.begin(ssid, password);
-    while (WiFi.status() != WL_CONNECTED) { // Wait for the Wi-Fi to connect
+    const char* ssid = "******";         // Entre com o nome da rede Wi-fi local
+    const char* senha = "*****";        // Entre com a senha da rede Wi-fi
+    WiFi.begin(ssid, senha);
+    while (WiFi.status() != WL_CONNECTED) { // Espera pela conexão
         delay(1000);
     }
-    Serial.println("Connection established!");  
-    Serial.print("IP address:\t");
-    Serial.println(WiFi.localIP());
+    Serial.println("Conexão estabelecida!");  // Conectado, obtendo IP
+    Serial.print("Endereço IP:\t");
+    Serial.println(WiFi.localIP()); // Mostra no Serial o endereço IP local obtido
     
-    const unsigned short mqttPort = 1883;
-    broker.init(mqttPort);
+    const unsigned short portaMQTT = 1883; // Define a porta padrão do MQTT 
+    meuBroker.init(portaMQTT);
     
-    // Setup web server
-    server.on("/", handleRoot);
-    server.begin();
+    // Configuração do servidor web
+    servidorWeb.on("/", PaginaPrincipal);  
+    servidorWeb.begin();
 }
 
 void loop() {
-    broker.update();
-}
+    meuBroker.update();
+} 
