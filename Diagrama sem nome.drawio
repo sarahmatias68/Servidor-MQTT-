@@ -1,0 +1,58 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0" version="24.7.6">
+  <diagram name="Página-1" id="PoR831f7lZM7kQB1Vl74">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Cluster: ESP32" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry width="665" height="187" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Client1" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="2">
+          <mxGeometry x="92" y="136" width="66" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="ESP32" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="2">
+          <mxGeometry x="312" y="33" width="57" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Client2" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="2">
+          <mxGeometry x="307" y="136" width="66" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Client3" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="2">
+          <mxGeometry x="522" y="136" width="66" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Web and WebSocket server" style="curved=1;startArrow=none;endArrow=block;exitX=0;exitY=0.7;entryX=0.51;entryY=0;" edge="1" parent="2" source="4" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="125" y="102" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="Web and WebSocket server" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.51;entryY=0;" edge="1" parent="2" source="4" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" value="Web and WebSocket server" style="curved=1;startArrow=none;endArrow=block;exitX=1;exitY=0.7;entryX=0.5;entryY=0;" edge="1" parent="2" source="4" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="555" y="102" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="Cluster: 2 esp" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="251" y="237" width="163" height="187" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="ESP2" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="10">
+          <mxGeometry x="65" y="136" width="49" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="ESP1" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="10">
+          <mxGeometry x="65" y="33" width="49" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="Synchronize data" style="curved=1;startArrow=none;endArrow=block;exitX=-4.62;exitY=-5.97;entryX=-4.62;entryY=-6.97;" edge="1" parent="10" source="12" target="11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
